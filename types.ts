@@ -12,8 +12,3 @@ export interface DuaMetadata {
   audioUrl: string; // URL to the audio file
   content: DuaLine[];
 }
-
-export enum ViewState {
-  LIST = 'LIST',
-  DETAIL = 'DETAIL',
-}
