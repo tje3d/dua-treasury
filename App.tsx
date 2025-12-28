@@ -112,8 +112,6 @@ const App: React.FC = () => {
                         مجموعه‌ای از دعاهای منتخب با صوت دلنشین و ترجمه روان.
                     </p>
                 </div>
-                {/* Decorative Pattern Background */}
-                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')]"></div>
              </div>
 
              <IslamicDivider />
