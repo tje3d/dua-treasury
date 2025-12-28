@@ -1,14 +1,21 @@
-export interface DuaLine {
+export interface PrayerVerse {
+  id: string;
   arabic: string;
   translation: string;
 }
 
-export interface DuaMetadata {
+export interface PrayerInfo {
   id: string;
   title: string;
-  arabicTitle: string;
-  description: string; // Short description for the card
-  fullDescription: string; // Long explanation (Riwayat/History)
-  audioUrl: string; // URL to the audio file
-  content: DuaLine[];
+  description: string;
+  icon: string;
+  color: string;
+  category: string;
+  benefits: string;
+  audio?: string;
+  versesCount: number;
+}
+
+export interface Prayer extends Omit<PrayerInfo, 'versesCount'> {
+  verses: PrayerVerse[];
 }

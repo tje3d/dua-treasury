@@ -64,20 +64,12 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, title }) => {
   };
 
   return (
-    <div className="fixed bottom-6 left-4 right-4 z-50 flex justify-center">
+    <div dir="ltr" className="fixed bottom-6 left-4 right-4 z-50 flex justify-center">
         <div className="bg-islamic-green/95 backdrop-blur-md text-white p-4 rounded-2xl shadow-2xl shadow-islamic-green/20 border border-white/10 w-full max-w-lg">
           
           <div className="flex items-center gap-4 mb-3">
-             {/* Info */}
-             <div className="flex-1 min-w-0">
-                <h4 className="text-sm font-bold text-islamic-goldLight truncate mb-1">{title}</h4>
-                <div className="text-[10px] text-white/60 font-mono tracking-wider">
-                    {formatTime(currentTime)} / {formatTime(duration)}
-                </div>
-             </div>
-             
              {/* Controls */}
-             <div className="flex items-center gap-3">
+             <div className="flex flex-1 items-center gap-3">
                  <button onClick={() => skip(-10)} className="text-white/70 hover:text-white transition p-1">
                     <SkipBack size={18} />
                  </button>
@@ -93,12 +85,20 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, title }) => {
                     <SkipForward size={18} />
                  </button>
              </div>
+
+             {/* Info */}
+             <div className="min-w-0">
+                <h4 className="text-sm font-bold text-islamic-goldLight truncate mb-1">{title}</h4>
+                <div className="text-[10px] text-white/60 font-mono tracking-wider">
+                    {formatTime(currentTime)} / {formatTime(duration)}
+                </div>
+             </div>
           </div>
 
           {/* Progress Bar */}
           <div className="relative h-1.5 w-full bg-black/20 rounded-full overflow-hidden group cursor-pointer">
              <div 
-                className="absolute top-0 right-0 h-full bg-islamic-gold transition-all duration-100"
+                className="absolute top-0 left-0 h-full bg-islamic-gold transition-all duration-100"
                 style={{ width: `${(currentTime / duration) * 100}%` }}
              ></div>
              <input

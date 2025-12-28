@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useParams, Link } from 'react-router-dom';
 import { DUAS } from './constants';
-import { DuaMetadata } from './types';
+import { Prayer } from './types';
 import { ChevronLeft, Download, Info, Moon, Sun, ArrowRight } from 'lucide-react';
 import AudioPlayer from './components/AudioPlayer';
 
@@ -42,6 +42,10 @@ const DuaList: React.FC<{ toggleDarkMode: () => void, isDarkMode: boolean }> = (
           <p className="text-islamic-goldLight/80 text-lg font-light max-w-xl mx-auto leading-relaxed">
             مجموعه‌ای از دعاهای منتخب با صوت دلنشین و ترجمه روان.
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-islamic-goldLight/90 text-sm border border-white/10">
+            <Download size={14} />
+            <span>امکان دریافت متن تمامی دعاها با فرمت JSON</span>
+          </div>
         </div>
       </div>
 
@@ -61,7 +65,7 @@ const DuaList: React.FC<{ toggleDarkMode: () => void, isDarkMode: boolean }> = (
             <div className="relative z-10">
               <div className="flex justify-between items-baseline mb-3">
                 <h3 className="text-xl font-bold text-islamic-dark dark:text-gray-100 font-sans group-hover:text-islamic-green dark:group-hover:text-islamic-gold transition-colors">{dua.title}</h3>
-                <span className="text-lg font-serif text-islamic-gold font-medium">{dua.arabicTitle}</span>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-gray-100 dark:bg-white/10 text-gray-400 dark:text-gray-500 tracking-wider">JSON</span>
               </div>
               
               <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6 line-clamp-2 pl-4">
@@ -89,7 +93,7 @@ const DuaDetail: React.FC<{ toggleDarkMode: () => void, isDarkMode: boolean }> =
     return <div className="text-center py-20">دعایی یافت نشد.</div>;
   }
 
-  const handleDownloadJson = (dua: DuaMetadata) => {
+  const handleDownloadJson = (dua: Prayer) => {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dua, null, 2));
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
@@ -148,7 +152,7 @@ const DuaDetail: React.FC<{ toggleDarkMode: () => void, isDarkMode: boolean }> =
               <div>
                 <h3 className="font-bold text-islamic-dark dark:text-islamic-goldLight text-lg mb-2">درباره این دعا</h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-8 text-justify opacity-90">
-                  {selectedDua.fullDescription}
+                  {selectedDua.benefits}
                 </p>
               </div>
             </div>
@@ -164,11 +168,12 @@ const DuaDetail: React.FC<{ toggleDarkMode: () => void, isDarkMode: boolean }> =
               </div>
             </div>
 
-            {selectedDua.content.map((line, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
+            {selectedDua.verses.map((line, index) => (
+              <div key={line.id} className="flex flex-col items-center text-center">
                 {/* Arabic */}
                 <p className="text-2xl md:text-4xl leading-[2.2] md:leading-[2.5] font-serif text-islamic-dark dark:text-gray-100 w-full mb-5 font-medium px-2" dir="rtl">
                   {line.arabic}
+                  <span class="text-emerald-600 dark:text-emerald-400">﴿{(index + 1).toLocaleString('fa-IR')}﴾</span>
                 </p>
                 
                 {/* Translation */}
@@ -176,7 +181,7 @@ const DuaDetail: React.FC<{ toggleDarkMode: () => void, isDarkMode: boolean }> =
                   {line.translation}
                 </p>
                 
-                {index < selectedDua.content.length - 1 && <VerseSeparator />}
+                {index < selectedDua.verses.length - 1 && <VerseSeparator />}
               </div>
             ))}
             
@@ -189,7 +194,7 @@ const DuaDetail: React.FC<{ toggleDarkMode: () => void, isDarkMode: boolean }> =
         <div className="h-32"></div>
 
         {/* Audio Player Component */}
-        <AudioPlayer src={selectedDua.audioUrl} title={selectedDua.title} />
+        {selectedDua.audio && <AudioPlayer src={selectedDua.audio} title={selectedDua.title} />}
       </div>
     </div>
   );
