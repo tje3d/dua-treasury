@@ -1,5 +1,10 @@
 # گنجینه دعا | Dua Treasury 🌙
 
+[![React](https://img.shields.io/badge/React-19.2-black?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.2-purple?logo=vite)](https://vitejs.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 [**مشاهده دموی زنده | Live Demo**](https://tje3d.github.io/dua-treasury/)
 
 [English](#english) | [فارسی](#persian)
@@ -23,6 +28,12 @@
 - **خروجی JSON:** امکان دانلود متن هر دعا به صورت فایل JSON برای استفاده در پروژه‌های دیگر.
 - **واکنش‌گرا (Responsive):** نمایش بهینه در تمامی دستگاه‌ها (موبایل، تبلت و دسکتاپ).
 
+### 📸 تصاویر پروژه
+<div align="center">
+  <img src="assets/home.png" alt="صفحه اصلی" width="45%" />
+  <img src="assets/kumayl.png" alt="صفحه دعا" width="45%" />
+</div>
+
 ### 🛠 تکنولوژی‌های مورد استفاده
 
 - **React 19**: کتابخانه قدرتمند رابط کاربری.
@@ -38,7 +49,7 @@
 
 1. مخزن را کلون کنید:
    ```bash
-   git clone https://github.com/your-username/dua-treasury.git
+   git clone https://github.com/tje3d/dua-treasury.git
    ```
 2. وارد پوشه پروژه شوید:
    ```bash
@@ -76,6 +87,12 @@ Dua Treasury is an open-source, modern web application for accessing Shia suppli
 - **JSON Export:** Ability to download each prayer's content as a JSON file for use in other projects.
 - **Fully Responsive:** Optimized for all screen sizes (Mobile, Tablet, Desktop).
 
+### 📸 Screenshots
+<div align="center">
+  <img src="assets/home.png" alt="Home Screen" width="45%" />
+  <img src="assets/kumayl.png" alt="Dua Screen" width="45%" />
+</div>
+
 ### 🛠 Tech Stack
 
 - **React 19**: Modern UI library.
@@ -91,7 +108,7 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/dua-treasury.git
+   git clone https://github.com/tje3d/dua-treasury.git
    ```
 2. Navigate to the project folder:
    ```bash
